@@ -1,0 +1,25 @@
+{
+  "name": "on-boarding",
+  "version": "1.0.0",
+  "description": "For on-boarding process.\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[DTO track on-boarding process.",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svsaurabh/on-boarding.git"
+  },
+  "author": "VIRTUSA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svsaurabh/on-boarding/issues"
+  },
+  "homepage": "https://github.com/svsaurabh/on-boarding#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "on-boarding",
+  "version": "1.0.0",
+  "description": "Track on boarding process",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.7.0",
+    "nodemon": "^1.19.2",
+    "sequelize": "^5.19.0",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svsaurabh/on-boarding.git"
+  },
+  "author": "VIRTUSA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svsaurabh/on-boarding/issues"
+  },
+  "homepage": "https://github.com/svsaurabh/on-boarding#readme"
+}

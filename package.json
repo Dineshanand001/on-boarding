@@ -1,10 +1,10 @@
 {
   "name": "on-boarding",
   "version": "1.0.0",
-  "description": "For on-boarding process.\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[DTO track on-boarding process.",
+  "description": "Tracking on-boarding process.",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.2"
   }
 }

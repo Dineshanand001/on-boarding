@@ -8,27 +8,37 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      first_name: {
+      firstName: {
         type: Sequelize.STRING
       },
-      last_name: {
+      lastName: {
         type: Sequelize.STRING
       },
-      email_id: {
+      emailId: {
         type: Sequelize.STRING
       },
-      contact_number: {
+      contactNumber: {
         type: Sequelize.STRING
       },
-      is_active: {
+      isActive: {
+        type: Sequelize.BOOLEAN,
+        defaultValue:false
+      },
+      autoPass: {
         type: Sequelize.BOOLEAN,
         defaultValue:false
       },
       role: {
         type: Sequelize.STRING,
       },
-      project_id: {
-        type: Sequelize.INTEGER
+      projectId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references:{
+           model: 'Projects',
+           key: 'id',
+           as:'projectId',
+        }
       },
       createdAt: {
         allowNull: false,

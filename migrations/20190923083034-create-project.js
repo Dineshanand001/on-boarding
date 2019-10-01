@@ -12,15 +12,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       code: {
+        unique:true,
         type: Sequelize.STRING
       },
-      client_name: {
+      clientName: {
         type: Sequelize.STRING
       },
-      client_location: {
+      clientLocation: {
         type: Sequelize.STRING
       },
-      manager_id: {
+      managerId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

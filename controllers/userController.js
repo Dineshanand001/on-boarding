@@ -14,8 +14,8 @@ module.exports = {
          .then(function(user){
             // ProjectService.projectByCode('212031')
             // .then(obj => {
-            if(req.query.email){               
-               console.log(MailService.triggerMail(req.query));
+            if(req.body){               
+               //console.log(MailService.triggerMail(req));
             }
             res.status(201).send(user);
             console.log("message");})//})
@@ -39,5 +39,15 @@ module.exports = {
    })
    .then(user => res.status(200).send(user))
    .catch(error => res.status(400).send(error))
+   },
+   activateUser(req,res){
+      return User.update(
+         {isActive: true},
+         {returning: true, where: {emailId: req.params.emailId} }
+         )
+         .then(user => res.status(200).send(user),
+         )
+         .catch(error => res.status(400).send(error))
 }
+
 };

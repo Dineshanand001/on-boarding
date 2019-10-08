@@ -1,0 +1,11 @@
+{
+  "development": {
+     "username": "saurabh",
+    "password": "password",
+    "database": "on_board_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "logging":true
+}
+}

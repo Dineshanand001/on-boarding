@@ -15,7 +15,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       emailId: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique:true
       },
       contactNumber: {
         type: Sequelize.STRING

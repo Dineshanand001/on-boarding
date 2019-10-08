@@ -45,7 +45,7 @@ module.exports = {
          {isActive: true},
          {returning: true, where: {emailId: req.params.emailId} }
          )
-         .then(user => res.status(200).send(user),
+         .then(user => res.status(200).send("Test: "+user+"\nThanks for grating permission to "+req.params.emailId),
          )
          .catch(error => res.status(400).send(error))
 }

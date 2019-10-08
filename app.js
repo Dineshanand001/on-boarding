@@ -4,11 +4,14 @@ var path = require('path');
 var express = require('express');
 const bodyParser = require('body-parser');
 var app = express();
+const methodOverride = require('method-override');
 
 const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+
+app.use(methodOverride('_method'))
 
 app.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from

@@ -1,6 +1,7 @@
 const config = require(__dirname + '/../config/mailConfig.json');
 var nodeMailer = require('nodemailer');
-function triggerMail(sender){
+//const managerMail =require(__dirname + '/../templates/managerEmail.ejs');
+function triggerMail(options){
    var transporter = nodeMailer.createTransport({
          host: config.host,
          port: config.port,
@@ -10,15 +11,16 @@ function triggerMail(sender){
               pass: config.auth.pass
           }
       });
+      console.log(options);      
       let mailOptions = {
-          from: sender+'<svsaurabh97@gmail.com>', // sender address
-          to: "saurabhvk@virtusa.com", // list of receivers
+          from: (options.sender||'New Resource Login Request')+'<svsaurabh97@gmail.com>', // sender address
+          to: options.email, // list of receivers
           subject: "Test", // Subject line
           text: "Hello", // plain text body
-          html:"<b>Test mail sent</b>",
+          html:"<b>Test mail</b>",
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
+     transporter.sendMail(mailOptions, (error, info) => {
          console.log("send mail called");
           if (error) {
              return console.log(error);

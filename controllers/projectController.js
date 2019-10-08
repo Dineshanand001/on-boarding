@@ -18,12 +18,12 @@ module.exports = {
         code:req.params.projectCode,
       },
    })
-   .then(project => res.status(201).send(project))
+   .then(project => res.status(200).send(project))
    .catch(error => console.log("Error"))
    },
    retrieve(req,res){
       return Project.findAll()
-      .then(project => res.status(201).send(project))
+      .then(project => res.status(200).send(project))
       .catch(error => res.status(400).send(error))
    }
 };

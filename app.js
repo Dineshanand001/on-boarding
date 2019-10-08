@@ -4,6 +4,8 @@ var express = require('express');
 const bodyParser = require('body-parser');
 var app = express();
 
+const PORT = process.env.PORT;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -20,5 +22,5 @@ app.get('*',(req,res) => res.status(200).send({
    message: 'Welcome Test',
 }));
 
-app.listen(3030);
+app.listen(PORT);
 module.exports = app;

@@ -3,6 +3,7 @@ require('dotenv').config();
 var path = require('path');
 var express = require('express');
 const bodyParser = require('body-parser');
+
 var app = express();
 const methodOverride = require('method-override');
 
@@ -35,5 +36,8 @@ app.get('*',(req,res) => res.status(200).send({
    message: 'Welcome Test',
 }));
 
-app.listen(PORT);
+//app.listen(PORT);
+const server = app.listen(PORT, () => {
+   console.log('Express listening at ', server.address().port);
+})
 module.exports = app;

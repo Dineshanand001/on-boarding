@@ -14,8 +14,8 @@ module.exports = {
          .then(function(user){
             // ProjectService.projectByCode('212031')
             // .then(obj => {
-            if(req.body){               
-               //console.log(MailService.triggerMail(req));
+            if(req.query.email){               
+               console.log(MailService.triggerMail(req));
             }
             res.status(201).send(user);
             console.log("message");})//})
@@ -43,10 +43,15 @@ module.exports = {
    activateUser(req,res){
       return User.update(
          {isActive: true},
-         {returning: true, where: {emailId: req.params.emailId} }
+         {returning: true, where: {emailId: req.params.emailId,isActive:false} }
          )
-         .then(user => res.status(200).send("Test: "+user+"\nThanks for grating permission to "+req.params.emailId),
-         )
+         .then(function(user){
+            if(user[1]==1){
+               res.status(200).send("Test: "+user+"\nThanks for grating permission to "+req.params.emailId);
+            } else{
+               res.status(200).send("Test: "+user+"\n"+req.params.emailId+" already has permission");
+            }
+         })
          .catch(error => res.status(400).send(error))
 }
 

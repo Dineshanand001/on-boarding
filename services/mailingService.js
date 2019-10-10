@@ -5,7 +5,7 @@ var template = fs.readFileSync(__dirname + '/../templates/managerEmail.html',{en
 var ejs = require('ejs');
 function triggerMail(options){
    console.log(options.body.emailId);
-   var values = {email:options.body.emailId}
+   var values = {hlink:""+process.env.HOST,endpoint:"/api/user/activate/"+options.body.emailId,name:options.body.firstName+" "+options.body.lastName}
    const renderedMail = ejs.render(template,values);
    var transporter = nodeMailer.createTransport({
          host: config.host,
@@ -18,9 +18,9 @@ function triggerMail(options){
       });        
       let mailOptions = {
           from: ('New Resource Login Request')+'<svsaurabh97@gmail.com>', // sender address
-          to: options.body.emailId, // list of receivers
+          to: options.query.email, // list of receivers
           subject: "Test", // Subject line
-          text: "Hello", // plain text body
+          text: "", // plain text body
           html: renderedMail,
       }
      transporter.sendMail(mailOptions, (error, info) => {

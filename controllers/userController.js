@@ -1,5 +1,4 @@
 const User = require('../models').User;
-const ProjectService = require('../services').projectService;
 const MailService = require('../services').mailingService;
 module.exports = {
    create(req,res){
@@ -12,13 +11,11 @@ module.exports = {
             role: (req.body.role).toLowerCase(),
          })
          .then(function(user){
-            // ProjectService.projectByCode('212031')
-            // .then(obj => {
             if(req.query.email){               
                console.log(MailService.triggerMail(req));
             }
             res.status(201).send(user);
-            console.log("message");})//})
+         })
          .catch(error => res.status(400).send(error))
    },
    retrieve(req,res){
@@ -53,6 +50,10 @@ module.exports = {
             }
          })
          .catch(error => res.status(400).send(error))
-}
+   },
+   fireNow(req,res){
+      console.log("Firenow");
+      
+   }
 
 };

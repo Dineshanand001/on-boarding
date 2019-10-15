@@ -1,5 +1,6 @@
 const User = require('../models').User;
 const MailService = require('../services').mailingService;
+const LDAPService = require('../services').LDAPService;
 module.exports = {
    create(req,res){
       return User
@@ -38,8 +39,10 @@ module.exports = {
    .catch(error => res.status(400).send(error))
    },
    activateUser(req,res){
+      console.log(req.params.emailId);
+      
       return User.update(
-         {isActive: true},
+         {isActive: true,LDAPEntry: false},
          {returning: true, where: {emailId: req.params.emailId,isActive:false} }
          )
          .then(function(user){

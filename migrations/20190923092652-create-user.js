@@ -29,6 +29,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue:false
       },
+      LDAPEntry:{
+        type: Sequelize.BOOLEAN,
+        defaultValue:null
+      },
       role: {
         type: Sequelize.STRING,
       },

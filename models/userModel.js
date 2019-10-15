@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     contactNumber: DataTypes.STRING,
     isActive: DataTypes.BOOLEAN,
     autoPass: DataTypes.BOOLEAN,
+    LDAPEntry:DataTypes.BOOLEAN,
     role: DataTypes.STRING,
     projectId: DataTypes.INTEGER
   }, {});

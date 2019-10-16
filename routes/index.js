@@ -4,6 +4,7 @@ const loginController = require('../controllers').login;
 
 module.exports = (app) => {
    app.get('/login',loginController.login);
+   app.post('/registerUser',loginController.registerUser);
    app.post('/api/user',userController.create);
    app.get('/api/user',userController.retrieve);
    app.get('/api/user/:role',userController.getByRole);

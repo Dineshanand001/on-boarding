@@ -1,7 +1,6 @@
-require('dotenv').config();
-
 const nJwt = require('njwt');
 const ldap = require('ldapjs');
+const LDAPService = require('../services').LDAPService;
 const config = require(__dirname + '/../config/config.json');
 
 const ldapClient = ldap.createClient({
@@ -21,4 +20,9 @@ module.exports = {
       res.status(200).send({ auth: true, token: jwt.compact() });
     });
   },
+  registerUser(req,res){
+    return LDAPService.addUser(req)
+    .then(user => res.status(200).send(user))
+    .catch(error => res.status(400).send(error))
+ }
 }

@@ -1,7 +1,8 @@
 const nJwt = require('njwt');
 const config = require(__dirname + '/../config/config.json');
 
-function jwtAuth(req, res, next) {
+module.exports = function (options) {
+    return function (req, res, next) {
   if (!req.headers.token) {
     return res.status(403).send({ auth: false, message: 'No token provided' });
   }
@@ -15,5 +16,4 @@ function jwtAuth(req, res, next) {
     next();
   });
 }
-
-module.exports = jwtAuth;
+}

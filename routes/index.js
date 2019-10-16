@@ -1,7 +1,7 @@
 const userController = require('../controllers').user;
 const projectController = require('../controllers').project;
 const loginController = require('../controllers').login;
-const ldapService = require('../services').ldapService;
+
 module.exports = (app) => {
    app.get('/login',loginController.login);
    app.post('/api/user',userController.create);

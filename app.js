@@ -5,14 +5,17 @@ var express = require('express');
 const bearerToken = require('express-bearer-token');
 const bodyParser = require('body-parser');
 const fireNow = require('./controllers/userController').fireNow;
+const ldapService = require('./services').ldapService;
 var models = require('./models');
 const cron = require('cron')
 var app = express();
+const router = express.Router();
 const PORT = process.env.PORT;
 
 app.use(bearerToken());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(ldapService());
 
 app.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
@@ -28,8 +31,6 @@ models.sequelize.sync().then(function(){
 }).catch(function(err){
    console.log(err,"Something wrong with Database !!!");
 });
-
-app.get('/login', );
 
 require('./routes')(app);
 //setInterval(fireNow,1000000)

@@ -29,7 +29,7 @@ function ldapConnect(){
         console.log(res);
     });
 }
-function addUser(req){
+function addUser(req, res){
     var entry = {
         cn: (req.body.emailId),
         sn: (req.body.lastName),
@@ -37,10 +37,17 @@ function addUser(req){
         objectclass: ['inetOrgPerson','organizationalPerson','person','top']
        
       };
+      console.log(entry);
       let emailId = (req.body.emailId).toLowerCase();
-      client.add("cn= " + `${emailId}` + ", ou=Users,dc=example,dc=com", entry, function(err) {
+      ldapClient.add('cn=' + `${emailId}` + ',ou=Users,dc=example,dc=com', entry, function(data, err) {
+        console.log("U r here")
         if(err){
           console.log(err);
+          
+          res.status(400).send();
+        }
+        if(data){
+        res.status(200).send();
         }
       });
 }

@@ -9,18 +9,20 @@ const ldapService = require('./services').ldapService;
 var models = require('./models');
 const cron = require('cron')
 var app = express();
+const cors = require('cors');
 const PORT = process.env.PORT;
 
+app.use(cors())
 app.use(bearerToken());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(ldapService.jwtAuth());
+//app.use(ldapService.jwtAuth());
 
-app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,GET,POST,DELETE,PATCH,UPDATE");
-   next();
- });
+// app.use(function(req, res, next) {
+//    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,GET,POST,DELETE,PATCH,UPDATE");
+//    next();
+//  });
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

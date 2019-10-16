@@ -1,6 +1,6 @@
 const nJwt = require('njwt');
 const ldap = require('ldapjs');
-const LDAPService = require('../services').LDAPService;
+const LDAPService = require('../services').ldapService;
 const config = require(__dirname + '/../config/config.json');
 
 const ldapClient = ldap.createClient({
@@ -8,8 +8,10 @@ const ldapClient = ldap.createClient({
   });
 module.exports = {
     login(req,res){
+    console.log(req.query.cn);
+    console.log(req.query.userPassword);
    
-    ldapClient.bind('cn='+req.body.userName+',ou=Users,dc=example,dc=com', req.body.password, function(err) {
+    ldapClient.bind('cn='+req.query.cn+',ou=Users,dc=example,dc=com', req.query.userPassword, function(err) {
       if(err) {
         return res.status(401).send({ auth: false, token: null });
       }
@@ -21,8 +23,9 @@ module.exports = {
     });
   },
   registerUser(req,res){
-    return LDAPService.addUser(req)
-    .then(user => res.status(200).send(user))
-    .catch(error => res.status(400).send(error))
+    console.log("register controller");
+    LDAPService.addUser(req,res)
+    // .then(user => res.status(200).send(user))
+    // .catch(error => res.status(400).send(error))
  }
 }
